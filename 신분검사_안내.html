@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>원기111년 신분검사 안내</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#F5F6EE; --surface:#FFFFFF; --ink:#26261C; --muted:#5E5D4E; --line:#DCDECB;
+  --moss:#56620E; --lime:#DFE56B; --lime-soft:#EEF1B8;
+  --apricot:#F4A473; --apricot-soft:#FCE3D3; --clay:#A64C1D;
+  --leader:#3D4A5C; --leader-soft:#E3E8EF;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#191A13; --surface:#22231B; --ink:#ECEDE0; --muted:#B3B3A2; --line:#3A3C2E;
+    --moss:#CBD56B; --lime:#4D5418; --lime-soft:#2E3213;
+    --apricot:#C9774A; --apricot-soft:#3B2618; --clay:#F0A57A;
+    --leader:#B9C7DA; --leader-soft:#232B36;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#191A13; --surface:#22231B; --ink:#ECEDE0; --muted:#B3B3A2; --line:#3A3C2E;
+  --moss:#CBD56B; --lime:#4D5418; --lime-soft:#2E3213;
+  --apricot:#C9774A; --apricot-soft:#3B2618; --clay:#F0A57A;
+  --leader:#B9C7DA; --leader-soft:#232B36;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 64px);-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--paper);color:var(--ink);
+  font-family:"Noto Sans KR","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+  font-size:17px;line-height:1.75;word-break:keep-all;overflow-wrap:break-word}
+h1,h2,h3{font-family:"Gowun Batang","Nanum Myeongjo","AppleMyungjo",serif;font-weight:700;line-height:1.35;margin:0}
+p{margin:0 0 .8em}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--moss);outline-offset:2px;border-radius:4px}
+
+/* hero */
+.hero{background:var(--lime);padding:44px 24px 36px;position:relative;overflow:hidden}
+.hero .year{font-size:15px;font-weight:500;color:var(--ink);opacity:.8;margin-bottom:10px}
+.hero h1{font-size:56px;letter-spacing:.04em}
+.hero .motto{font-family:"Gowun Batang",serif;font-size:21px;margin-top:18px;line-height:1.6}
+.hero .org{margin-top:22px;font-size:15px;font-weight:500}
+.hero svg{position:absolute;right:-40px;bottom:-40px;width:200px;height:200px;opacity:.18}
+
+/* nav */
+nav{position:sticky;top:0;z-index:10;background:var(--paper);border-bottom:1px solid var(--line);
+  padding-top:env(safe-area-inset-top,0px)}
+nav ul{display:flex;gap:6px;list-style:none;margin:0;padding:10px 16px;overflow-x:auto;scrollbar-width:none}
+nav ul::-webkit-scrollbar{display:none}
+nav a{display:block;white-space:nowrap;text-decoration:none;font-size:15px;font-weight:500;
+  padding:7px 14px;border-radius:999px;border:1px solid var(--line);background:var(--surface)}
+nav a.leader{border-color:var(--leader);color:var(--leader)}
+nav a.on{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+
+main{max-width:640px;margin:0 auto;padding:0 20px 40px}
+section{padding:40px 0 8px}
+section>h2{font-size:28px;margin-bottom:6px}
+.sub{color:var(--muted);font-size:15px;margin-bottom:20px}
+h3{font-size:20px;margin:28px 0 10px}
+
+.btn{display:block;text-align:center;text-decoration:none;font-weight:700;font-size:17px;
+  background:var(--ink);color:var(--paper);border-radius:12px;padding:15px 18px;margin:16px 0 6px}
+.note{font-size:14px;color:var(--muted)}
+
+/* lists */
+ol.plain{padding-left:1.4em;margin:0}
+ol.plain li{margin-bottom:10px}
+.callout{background:var(--lime-soft);border-left:4px solid var(--moss);padding:14px 16px;border-radius:0 10px 10px 0;margin:16px 0;font-size:16px}
+.callout.warm{background:var(--apricot-soft);border-color:var(--clay)}
+.callout.leader{background:var(--leader-soft);border-color:var(--leader)}
+.callout strong{display:block;margin-bottom:4px}
+
+/* ladder */
+.ladder{list-style:none;margin:12px 0;padding:0;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--surface)}
+.ladder li{display:grid;grid-template-columns:52px 1fr;align-items:center;border-bottom:1px solid var(--line)}
+.ladder li:last-child{border-bottom:0}
+.ladder b{display:flex;align-items:center;justify-content:center;height:100%;min-height:48px;font-size:20px;font-family:"Gowun Batang",serif}
+.ladder span{padding:10px 14px}
+.ladder.up li:nth-child(1) b{background:transparent}
+.ladder.up li:nth-child(2) b{background:color-mix(in srgb,var(--lime) 25%,transparent)}
+.ladder.up li:nth-child(3) b{background:color-mix(in srgb,var(--lime) 45%,transparent)}
+.ladder.up li:nth-child(4) b{background:color-mix(in srgb,var(--lime) 65%,transparent)}
+.ladder.up li:nth-child(5) b{background:color-mix(in srgb,var(--lime) 85%,transparent)}
+.ladder.up li:nth-child(6) b{background:var(--lime)}
+.ladder.down li:nth-child(1) b{background:transparent}
+.ladder.down li:nth-child(2) b{background:color-mix(in srgb,var(--apricot) 20%,transparent)}
+.ladder.down li:nth-child(3) b{background:color-mix(in srgb,var(--apricot) 40%,transparent)}
+.ladder.down li:nth-child(4) b{background:color-mix(in srgb,var(--apricot) 60%,transparent)}
+.ladder.down li:nth-child(5) b{background:color-mix(in srgb,var(--apricot) 80%,transparent)}
+.ladder.down li:nth-child(6) b{background:var(--apricot)}
+
+/* tabs */
+.tabs{display:flex;gap:6px;margin:8px 0 0}
+.tabs button{flex:1;font:inherit;font-weight:700;font-size:16px;padding:10px 0;border-radius:10px 10px 0 0;
+  border:1px solid var(--line);border-bottom:0;background:transparent;color:var(--muted);cursor:pointer}
+.tabs button[aria-selected="true"]{background:var(--surface);color:var(--ink)}
+.tabpanel .ladder{margin-top:0;border-top-left-radius:0;border-top-right-radius:0}
+
+/* accordion */
+.items{border-top:1px solid var(--line)}
+details{border-bottom:1px solid var(--line)}
+summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:10px;padding:15px 2px}
+summary::-webkit-details-marker{display:none}
+summary .nm{font-weight:700;font-size:18px}
+summary .hj{color:var(--muted);font-size:14px}
+summary .pt{margin-left:auto;font-size:14px;color:var(--moss);font-weight:700;white-space:nowrap}
+summary::after{content:"";width:9px;height:9px;border-right:2px solid var(--muted);border-bottom:2px solid var(--muted);transform:rotate(45deg);margin:0 4px 4px 6px;transition:transform .2s;flex:none}
+details[open] summary::after{transform:rotate(-135deg);margin-bottom:-4px}
+.body{padding:0 2px 18px;font-size:16px}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.chips span{font-size:14px;background:var(--lime-soft);border-radius:6px;padding:3px 9px}
+.down-items summary .pt{color:var(--clay)}
+.grp{font-family:"Gowun Batang",serif;font-weight:700;font-size:17px;margin:26px 0 6px;color:var(--muted)}
+.expand{font:inherit;font-size:14px;background:none;border:1px solid var(--line);border-radius:999px;padding:5px 12px;color:var(--muted);cursor:pointer;margin-bottom:10px}
+
+/* ledger */
+.ledger{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:14px 0}
+.ledger div{border-radius:12px;padding:14px}
+.ledger .dae{background:var(--lime-soft)}
+.ledger .cha{background:var(--apricot-soft)}
+.ledger h4{margin:0 0 6px;font-size:16px}
+.ledger ul{margin:0;padding-left:1.1em;font-size:15px}
+.ledger p{font-size:14px;margin:6px 0 0;color:var(--muted)}
+
+/* tables */
+.tbl{overflow-x:auto;margin:10px 0 4px;border:1px solid var(--line);border-radius:10px;background:var(--surface)}
+table{border-collapse:collapse;width:100%;font-size:15px;min-width:420px}
+th,td{padding:8px 10px;border-bottom:1px solid var(--line);text-align:right;white-space:nowrap}
+th{background:var(--lime-soft);font-weight:700;text-align:center}
+td:first-child,th:first-child{text-align:left}
+tr:last-child td{border-bottom:0}
+.cap{font-size:14px;color:var(--muted);margin-top:18px}
+
+/* leader section */
+#leader{margin-top:28px;border-top:6px solid var(--leader)}
+#leader>h2{color:var(--leader)}
+.flow{list-style:none;counter-reset:s;margin:12px 0;padding:0}
+.flow>li{counter-increment:s;position:relative;padding:9px 0 9px 44px;border-bottom:1px dashed var(--line)}
+.flow>li::before{content:counter(s);position:absolute;left:0;top:8px;width:30px;height:30px;border-radius:50%;
+  border:1px solid var(--line);display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;color:var(--muted)}
+.flow>li.hl{background:var(--leader-soft);border-radius:12px;border-bottom:0;padding:14px 14px 14px 52px;margin:6px 0}
+.flow>li.hl::before{left:12px;top:13px;background:var(--leader);color:var(--surface);border-color:var(--leader)}
+.flow>li.hl ol{margin:8px 0 0;padding-left:1.2em;font-size:15px}
+.flow>li.hl ol li{margin-bottom:8px}
+.flow>li.hl ul{margin:2px 0 0;padding-left:1.1em}
+.points{margin:0;padding-left:1.2em}
+.points li{margin-bottom:10px}
+
+footer{text-align:center;color:var(--muted);font-size:14px;padding:30px 20px 40px}
+
+@media (prefers-reduced-motion: reduce){*{transition:none!important;scroll-behavior:auto!important}}
+@media (min-width:700px){.hero{padding:64px 0 52px}.hero>div{max-width:640px;margin:0 auto;padding:0 20px}}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div>
+    <div class="year">원기111년 12월 출가교화단회</div>
+    <h1>신분검사</h1>
+    <div class="motto">일일시시로 자기검사<br>자기검사로 인류검사</div>
+    <div class="org">출가교화단</div>
+  </div>
+  <svg viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="46" fill="none" stroke="currentColor" stroke-width="3"/><circle cx="50" cy="50" r="30" fill="none" stroke="currentColor" stroke-width="3"/><circle cx="50" cy="50" r="14" fill="none" stroke="currentColor" stroke-width="3"/></svg>
+</header>
+
+<nav aria-label="목차">
+  <ul>
+    <li><a href="#about">신분검사란</a></li>
+    <li><a href="#up">당연등급</a></li>
+    <li><a href="#down">부당등급</a></li>
+    <li><a href="#ledger">수지대조</a></li>
+    <li><a href="#self">자기평가</a></li>
+    <li><a href="#leader" class="leader">진행 요령</a></li>
+  </ul>
+</nav>
+
+<main>
+
+
+
+<section id="about" style="padding-top:28px">
+  <h2>신분검사란</h2>
+  <p class="sub">원기12년 2월, 소태산 대종사께서 제정 발표하신 자기 점검법</p>
+  <p>공부인의 수행 정도와 인격 내용을 스스로 점검하도록 당연등급, 부당등급, 수지대조를 통한 신분조사법을 제정하여 시행하셨습니다. 공부와 사업을 더욱 향상시키고 교단의 인사 대우에도 활용하기 위함이었습니다.</p>
+  <h3>신분검사는</h3>
+  <ol class="plain">
+    <li>자기가 자기를 성현 만드는 법이며</li>
+    <li>공부인이 시·비·선·악을 알며 마음의 주착한 바와 행동의 본말을 알아 수양력·연구력·취사력을 얻기 위한 자기 점검법이며</li>
+    <li>공부를 하기 전과 공부를 한 후, 또는 지난해와 올해를 대조하여 변화된 점을 알기 위함이며</li>
+    <li>당연등급의 점수는 올라갈수록 이(利)가 되고 내려갈수록 해(害)가 되며, 부당등급의 점수는 올라갈수록 해가 되고 내려갈수록 이가 되며</li>
+    <li>수지대조에 대(貸)가 많으면 영생의 복락[저축]이 되고, 차(借)가 많으면 영생의 빚[채무]가 됩니다.</li>
+  </ol>
+  <div class="callout">
+    <strong>실시 요령</strong>
+    매년 1회 본인이 실시하며 3년에 한 번씩 총결산합니다. 매년 12월 출가교화단 단회 때 단장의 주관으로 실시하고, 점검표는 단장의 확인을 받아 개인이 보관합니다.
+  </div>
+</section>
+
+<section id="up">
+  <h2>당연등급</h2>
+  <p class="sub">복락의 씨앗 · 23항목 · 470점 만점</p>
+  <p>각 항목은 20점 만점이며, 기능만 30점입니다. 검사 기간은 그해 1년이며, 본인의 원에 따라 첫 검사는 지나간 일생을 놓고 할 수도 있습니다.</p>
+  <div class="callout">
+    <strong>신심과 서원</strong>
+    장차 보충할 것을 전제하고 만점으로 기록할 수도 있습니다.
+  </div>
+
+  <h3>평가 기준</h3>
+  <p class="note">점수는 중간 수인 3·5·7·9로도 평가할 수 있습니다.</p>
+  <ol class="ladder up">
+    <li><b>0</b><span>오히려 그 반대다</span></li>
+    <li><b>2</b><span>되기도 한다</span></li>
+    <li><b>4</b><span>반 정도 된다</span></li>
+    <li><b>6</b><span>거의 된다</span></li>
+    <li><b>8</b><span>저절로 된다</span></li>
+    <li><b>10</b><span>이에 묶이지도 않는다</span></li>
+  </ol>
+
+  <h3>공심·지혜·효성은 따로 정한 기준으로</h3>
+  <p class="note">이 세 항목은 위의 공통 기준 대신 아래 예외조목으로 평가합니다.</p>
+  <div class="tabs" role="tablist">
+    <button role="tab" aria-selected="true" aria-controls="ex0" id="t0">공심</button>
+    <button role="tab" aria-selected="false" aria-controls="ex1" id="t1">지혜</button>
+    <button role="tab" aria-selected="false" aria-controls="ex2" id="t2">효성</button>
+  </div>
+  <div class="tabpanel" role="tabpanel" id="ex0" aria-labelledby="t0">
+    <ol class="ladder up">
+      <li><b>0</b><span>빙공영사(憑公營私)</span></li>
+      <li><b>2</b><span>무공사사(無公私事)</span></li>
+      <li><b>4</b><span>선사후공(先私後公)</span></li>
+      <li><b>6</b><span>공사병행(公私竝行)</span></li>
+      <li><b>8</b><span>선공후사(先公後私)</span></li>
+      <li><b>10</b><span>지공무사(至公無私)</span></li>
+    </ol>
+  </div>
+  <div class="tabpanel" role="tabpanel" id="ex1" aria-labelledby="t1" hidden>
+    <ol class="ladder up">
+      <li><b>0</b><span>모른다</span></li>
+      <li><b>2</b><span>알듯하다</span></li>
+      <li><b>4</b><span>대체는 파악한다</span></li>
+      <li><b>6</b><span>거의 안다</span></li>
+      <li><b>8</b><span>걸림 없이 안다</span></li>
+      <li><b>10</b><span>대소유무의 이치를 보아다가 인간의 시비이해를 건설한다</span></li>
+    </ol>
+  </div>
+  <div class="tabpanel" role="tabpanel" id="ex2" aria-labelledby="t2" hidden>
+    <ol class="ladder up">
+      <li><b>0</b><span>심지의 안락도 육체의 봉양도 못 드린다</span></li>
+      <li><b>2</b><span>심지의 안락과 육체의 봉양을 조금 드린다</span></li>
+      <li><b>4</b><span>육체의 봉양은 충분히 드린다</span></li>
+      <li><b>6</b><span>심지의 안락은 충분히 드린다</span></li>
+      <li><b>8</b><span>심지의 안락과 육체의 봉양을 똑같이 충분히 드린다</span></li>
+      <li><b>10</b><span>인생의 요도와 공부의 요도를 빠짐없이 밟는다</span></li>
+    </ol>
+  </div>
+
+  <h3>검사 항목</h3>
+  <button class="expand" data-target="upItems" type="button">모두 펼치기</button>
+  <div class="items" id="upItems"></div>
+</section>
+
+<section id="down">
+  <h2>부당등급</h2>
+  <p class="sub">죄고의 씨앗 · 33항목 · 각 10점</p>
+  <p>삼십계문의 범계 정도와 허위·편심·아상을 점검합니다. 검사 기간은 그해 1년입니다.</p>
+  <div class="callout warm">
+    <strong>점수가 낮을수록 좋습니다</strong>
+    부당등급은 점수가 높을수록 범계가 많다는 뜻이며, 330점이 가장 범계가 많을 때입니다. 중계(살·도·음)는 한 번만 범해도 해당 항목을 10점으로 기록합니다.
+  </div>
+
+  <h3>평가 기준</h3>
+  <p class="note">점수는 중간 수인 3·5·7·9로도 평가할 수 있습니다.</p>
+  <ol class="ladder down">
+    <li><b>0</b><span>오히려 그 반대다</span></li>
+    <li><b>2</b><span>따로 뗄 것 없다</span></li>
+    <li><b>4</b><span>거의 떼어 버렸다</span></li>
+    <li><b>6</b><span>반 정도 떼었다</span></li>
+    <li><b>8</b><span>떼기도 했다</span></li>
+    <li><b>10</b><span>못 떼었다</span></li>
+  </ol>
+
+  <h3>검사 항목</h3>
+  <button class="expand" data-target="downItems" type="button">모두 펼치기</button>
+  <div class="down-items" id="downItems"></div>
+</section>
+
+<section id="ledger">
+  <h2>수지대조</h2>
+  <p class="sub">빈부결산 · 금액으로 환산하여 점검</p>
+  <p>한 해의 수지대조를 통해 자신이 얼마나 보은 작복을 하였는가, 아니면 빚만 지고 살았는가를 알아보는 것입니다.</p>
+  <div class="ledger">
+    <div class="dae"><h4>대(貸)</h4><ul><li>혜시</li><li>수입</li><li>대부</li></ul><p>부유의 자산</p></div>
+    <div class="cha"><h4>차(借)</h4><ul><li>혜수</li><li>지출</li><li>차용</li></ul><p>빈천의 자산</p></div>
+  </div>
+
+  <h3>항목별 작성 방법</h3>
+  <div class="items" id="ledgerItems"></div>
+
+  <h3>참고표</h3>
+  <p class="cap">표1 표준지출참고표 · 혜수, 처음 작성하는 경우 (단위: 천원)</p>
+  <div class="tbl"><table>
+    <tr><th>학력</th><th>연령</th><th>월</th><th>년</th><th>계</th><th>누계</th></tr>
+    <tr><td>취학 전</td><td>1~6</td><td>140</td><td>1,680</td><td>8,400</td><td></td></tr>
+    <tr><td>초등</td><td>6~12</td><td>280</td><td>3,360</td><td>20,160</td><td>28,560</td></tr>
+    <tr><td>중학</td><td>12~15</td><td>420</td><td>5,040</td><td>15,120</td><td>43,680</td></tr>
+    <tr><td>고등</td><td>15~18</td><td>560</td><td>6,720</td><td>20,160</td><td>63,840</td></tr>
+    <tr><td>대학</td><td>18~22</td><td>700</td><td>8,400</td><td>33,600</td><td>97,440</td></tr>
+    <tr><td>석사</td><td>22~24</td><td>840</td><td>10,080</td><td>20,160</td><td>117,600</td></tr>
+    <tr><td>박사</td><td>24~27</td><td>1,400</td><td>16,800</td><td>50,400</td><td>168,000</td></tr>
+  </table></div>
+
+  <p class="cap">표2 학업을 마친 후 지출 기준표 · 혜수, 졸업 이후 검사년도 전까지 (단위: 천원)</p>
+  <div class="tbl"><table style="min-width:0">
+    <tr><th>학력</th><th>월</th><th>년</th></tr>
+    <tr><td>중졸 이하</td><td>280</td><td>3,360</td></tr>
+    <tr><td>고졸</td><td>420</td><td>5,040</td></tr>
+    <tr><td>대졸</td><td>560</td><td>6,720</td></tr>
+    <tr><td>석사</td><td>700</td><td>8,400</td></tr>
+    <tr><td>박사</td><td>840</td><td>10,080</td></tr>
+  </table></div>
+
+  <p class="cap">표3 전무출신 급수별 혜시 점수표 · 혜시 (단위: 천원)</p>
+  <div class="tbl"><table>
+    <tr><th>근무년수</th><th>13~퇴임</th><th>8~12</th><th>5~7</th><th>1~4</th></tr>
+    <tr><td>용금만 받는 자</td><td>18,000</td><td>12,120</td><td>10,440</td><td>7,920</td></tr>
+    <tr><td>용금과 생활지원금을 받는 자</td><td>15,000</td><td>10,560</td><td>8,760</td><td>6,600</td></tr>
+    <tr><td>급료를 받는 자</td><td>3,000</td><td>2,040</td><td>1,800</td><td>1,320</td></tr>
+  </table></div>
+  <p class="note">표3은 교도사업성적 사정규정(제9조, 제10조)에 근거하여 전무출신의 급수별 1년간 사업성적을 혜시로 환산한 것입니다.</p>
+
+  <p class="cap">표4 수입 기준 참고표 · 혜시 (월 기준, 단위: 천원)</p>
+  <div class="tbl"><table>
+    <tr><th>역량</th><th>없다</th><th>조금</th><th>보통</th><th>많이</th><th>특출</th></tr>
+    <tr><td>빙공영사</td><td>0</td><td>―</td><td>―</td><td>―</td><td>―</td></tr>
+    <tr><td>무공유사</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+    <tr><td>선사후공</td><td>140</td><td>280</td><td>420</td><td>560</td><td>700</td></tr>
+    <tr><td>공사병행</td><td>280</td><td>560</td><td>840</td><td>1,120</td><td>1,400</td></tr>
+    <tr><td>선공후사</td><td>560</td><td>840</td><td>1,260</td><td>1,960</td><td>2,380</td></tr>
+    <tr><td>지공무사</td><td>1,120</td><td>1,680</td><td>2,520</td><td>3,780</td><td>5,600</td></tr>
+  </table></div>
+  <p class="note">표가 화면보다 넓으면 옆으로 밀어서 보실 수 있습니다.</p>
+</section>
+
+<section id="self">
+  <h2>자기평가</h2>
+  <p class="sub">결과를 종합하여 다음 해 공부 계획 세우기</p>
+  <p>각자 신분검사 결과를 종합 평가하여 자기 인격의 허와 실을 점검해 보고, 다음 해의 공부 계획을 간략하게 세워 봅니다.</p>
+  <div class="callout">당연등급은 복락의 씨앗임을 알아 그 점수를 계속 상승시켜 나가기에 노력하고</div>
+  <div class="callout warm">부당등급은 죄악의 씨앗임을 깨달아 계속 그 점수를 하강시켜 가며</div>
+  <div class="callout">혜시와 수입과 대부는 부유의 자산임을 알아 계속 상승시켜 가고</div>
+  <div class="callout warm">혜수와 지출과 차용은 빈천의 자산임을 깨달아 계속 하강시켜 갑니다.</div>
+</section>
+
+<section id="leader">
+  <h2>12월 단회 진행 요령</h2>
+  <p class="sub">신분검사는 정규 식순 9. 기타 순서에서 진행합니다</p>
+
+  <ol class="flow">
+    <li>절부합절('서원을 이루어 주소서'를 함께 부르며)</li>
+    <li>개회</li>
+    <li>입정</li>
+    <li>설명기도</li>
+    <li>법문합독(종법사 법문) 및 교화단보 숙지</li>
+    <li>상위단 전달사항 공유</li>
+    <li>문답·감정·해오</li>
+    <li>법의문답·의견제출안 협의</li>
+    <li class="hl"><strong>기타(신분검사)</strong>
+      <ol>
+        <li>취지 나눔(단장)
+          <ul><li>신분검사는 "자기가 자기를 성현 만드는 법"임을 함께 새깁니다.</li>
+          <li>점수의 높고 낮음보다 지난해와 올해를 대조하여 변화된 점을 살피는 데 뜻이 있음을 안내합니다.</li></ul></li>
+        <li>작성
+          <ul><li>종이 점검표 또는 온라인 양식으로 각자 작성합니다.</li>
+          <li>당연등급 → 부당등급 → 수지대조 → 자기평가 순으로 작성합니다.</li>
+          <li>시간이 부족하면 당연등급·부당등급까지 단회에서 작성하고, 수지대조와 자기평가는 각자 마무리할 수 있습니다.</li></ul></li>
+        <li>자기평가 나눔
+          <ul><li>점수나 수지대조 금액은 공개하지 않습니다.</li>
+          <li>작성하며 새롭게 발견한 점, 다음 해 공부 계획을 중심으로 나눕니다.</li></ul></li>
+        <li>단장 확인
+          <ul><li>종이 점검표: 단장님께서 확인하고 점검한 뒤 단원 개인이 각자 보관합니다.</li>
+          <li>온라인 작성: 작성을 마쳤음을 단장님께 말씀드리는 것으로 확인을 대신합니다.</li></ul></li>
+      </ol>
+    </li>
+    <li>'전무출신의 도' 합독</li>
+    <li>절부분급('원하옵니다'를 함께 부르며)</li>
+    <li>폐회</li>
+  </ol>
+  <div class="callout leader">단활동은 자율적으로 운영하되 공부담 중심의 단회가 되도록 합니다. 신분검사 작성에 시간이 걸리므로 7·8항의 시간을 적절히 조정하여 운영해 주시기 바랍니다.</div>
+</section>
+
+</main>
+
+<footer>출가교화단 · 신분검사 안내서 내용을 바탕으로 정리하였습니다.</footer>
+
+<script>
+const UP=[
+ ["신심","信心","20",["진리 5","스승 5","법 5","회상 5"],"진리와 법과 스승과 이 회상을 믿는 마음이다. 믿는 마음이 구경에 이르고 보면 진리와 법과 스승과 회상과 낱이 없이 하나가 되어 버린다.","장차 보충할 것을 전제하고 만점으로 기록할 수도 있다."],
+ ["서원","誓願","20",["위개인 5","위가정 10","위국가 15","위세계 20"],"자기가 무엇인가 해 보겠다고 하는 큰 발원이 서원이다. 이 서원은 개인을 위한 원, 가정을 위한 원, 국가를 위한 원, 세계를 위한 원으로 구분되는데 이상 네 가지 원 중에서 세계를 위한 원이라야 20점 만점을 주도록 한다.","장차 보충할 것을 전제하고 만점으로 기록할 수도 있다."],
+ ["공심","公心","20",["부분 공심 10","전체 공심 10"],"소아를 버리고 대아를 위해 바치는 마음이다. 부분 공심과 전체 공심으로 나눌 수 있다. 부분 공심이란 자기의 맡은바 책임한계는 알뜰히 지켜 나가나 그 밖을 벗어나서는 오불관언(吾不關焉)하는 마음이다. 전체 공심은 이와 반대로 자기의 맡은바 책임에도 충실할 뿐만 아니라 항상 전체를 위한 생각이 바탕하여 활동한다. 표준은 빙공영사, 선사후공, 선공후사, 지공무사인가를 살필 것이다.","예외조목으로 평가합니다."],
+ ["겸양","謙讓","20",["일은 앞서고(內謙) 10","功은 사양(外讓) 10"],"안으로 겸손하고 밖으로 양보하는 마음씨이다. 부귀 등 어떠한 우위에 처해 있다 할지라도 교만함이 없이 굴기하심(屈己下心)하며 공경 조심하고 공(功)이나 명예나 물질이나 간에 좋은 것은 양보하는 마음씨이다."],
+ ["통제","統制","20",["상봉 10","하솔 10"],"가정과 사회 직장 그 어느 곳에서도 그 마땅히 할 바 길을 따라 좇고 이끄는 마음이다. 상봉하솔 하는 심법과 역량으로 연령, 직책, 법 등 어느 모로 보나 자기보다 하위에 있는 처지를 가르치고 거느리고 이끌어 주는 마음이다."],
+ ["무상","無相","20",["시기·질투 없음 10","명상 없음 10"],"아상, 인상, 중생상, 수자상 등 사상과 법상 비법상까지도 텅 비움을 뜻한다. 시기 질투의 상대심이 없어 남의 잘한 일을 잘 보아주며 명상욕에 사로잡힘이 없고 명상을 얻은 후에도 거기에 걸림이 없다."],
+ ["인내","忍耐","20",["일시적 인내 10","영구적 인내 10"],"참고 견디는 마음이다. 일시적 인내와 영구적 인내로 구분할 수 있다. 일시적이라 함은 한서와 기근 그리고 희로애락에 대해 순간적으로 참고 견디는 마음이요, 영구적 인내란 어떠한 서원이나 목적을 세우고 성공할 때까지 어떠한 순역경계에도 끌리지 않고 계속 밀고 나가는 끈기와 지구력이다."],
+ ["신의","信義","20",["대사 10","소사 10"],"대의 명분에 입각한 신용과 의리이다. 소사와 대사에서의 신의로 구분할 수 있다. 소사에서는 개인 대 개인, 주로 신용과 시간 약속 등 일상적이고 자신에 관한 것이요, 대사에서는 대중과의 관계, 국가 교단과의 관계, 큰 서원을 세우고 지켜 가는 등 주로 크고 영구적인 관계에서의 신의이며 특히 교단에서는 법통과 종통을 굳게 세워 지켜 가는 마음이다."],
+ ["전일","專一","20",["동시 10","정시 10"],"어느 때 어느 곳에서나 온전한 일심을 간직하는 마음이다. 동할 때에는 불의를 제거하고 선후를 잘 알아서 자기의 주어진 임무에 충실할 뿐 무관사에 동하거나 사사에 흔들림이 없는 것이요, 정할 때에는 앞으로의 형세를 보아 미리 연마하며 잡념을 제거하고 일심을 양성하는 등 동하여도 분별에 착이 없고 정하여도 분별이 절도에 맞는 마음이다."],
+ ["지혜","智慧","20",["사에 명 10","이에 명(성리) 10"],"일과 이치간에 밝게 판단해 내는 알음알이와 슬기이다. 사명(事明), 이명(理明)으로 구분할 수 있다. 사명은 일의 시비이해를 밝게 판단하며 완급 선후를 적절히 맞추어 가는 마음이며, 이명은 자성 원리와 대소 유무 인과보응 되는 이치를 밝게 아는 마음이다.","예외조목으로 평가합니다."],
+ ["청렴","淸廉","20",["색에 청정(계문) 10","재에 염치(물질) 10"],"조신해 나가는 바가 깨끗하고 염치를 아는 마음이다. 청정과 염치로 구분할 수 있다. 청정은 계행이 청정하여 혼탁한 세상을 맑히는 청신제요, 염치는 매사에 분수 밖을 내다보고 도에 넘치는 것을 부끄러움으로 알아 벗어나지 않는 마음이다."],
+ ["학문","學問","20",["도학 10","과학 10"],"시대에 따라 모든 학문을 준비하라 하신 바 학식을 의미한다. 과학을 토대로 한 일반학문과 도덕을 토대로 한 도학으로 구분할 수 있다."],
+ ["기능","技能","30",["농 10","공 10","상 10"],"농, 공, 상에 대한 기술적인 역량과 능력이다. 농은 영농기술과 역량, 상은 기업적인 상술과 역량, 공은 기계관리의 기술역량을 말한다."],
+ ["효성","孝誠","20",["생부모에게 10","도가부모에게 10"],"나를 낳고 기르고 가르친 일체 부모에게 바치는 정성심이다. 생가 부모는 나의 육신을 낳고 길러 주셨으며, 도가의 부모는 나의 정신을 낳고 길러주신 부모요 스승이다. 그러므로 이 모든 은혜에 대해 육체의 봉양과 심지의 안락, 유업계승 등으로 보은하는 모든 정성이 바로 효성이다.","예외조목으로 평가합니다."],
+ ["진실","眞實","20",["내진(마음) 10","외실(언행) 10"],"마음에 거짓이 없고 꾸밈없는 실다움을 뜻한다. 자기 양심과 진리를 속이지 않는 내진과 내외가 겸하고 언행이 일치하여 항상 실질을 주장하는 외실로 구분할 수 있다."],
+ ["은악양선","隱惡揚善","20",["은악 10","양선 10"],"다른 사람의 잘잘못을 따라서 간직해야 할 바른 심법이다. 은악은 다른 사람의 허물을 발견했을 때 그것을 들추려는 마음이나 미워하는 마음이 없이 오히려 안타깝게 여기고 덮어서 고치도록 해주려는 마음이요, 양선은 다른 사람의 잘한 일을 알았을 때 그것을 드러내 포상을 받도록 해주고 세상의 거울이 되도록 하려는 마음이다."],
+ ["심사결단","心事決斷","20",["소사 10","대사 10"],"모든 일을 처결해 갈 때에 결단성이다. 대의명분과 자리이타의 정신에 입각하여 처리하되 개인적인 것과 일시적인 것 소소한 일에 대한 결단성과 대중적이고 영구적인 큰일에 있어서의 결단성으로 구분된다."],
+ ["주밀","周密","20",["소사 10","대사 10"],"모든 일을 도모해 갈 때에 주도 면밀한 일 처리를 말한다. 주로 일상적이고 자기 개인에 그치는 적은 일에서의 주밀과 그 영향이 대중에게까지 또는 영구적인 데까지 미치는 큰 일에 있어서의 주밀로 구분된다."],
+ ["수시변역","隨時變易","20",["소사 10","대사 10"],"달라지는 상황 따라서 수기응변의 도이다. 수기응변의 도를 펴되 대의명분과 자리이타의 정신에 위배됨이 없어야 한다. 여기에도 개인적이고 일시적이며 일상적인데 그치는 소사와 대중적이며 영구적인 대의에 관계되는 대사에서의 수시 변역으로 구분된다."],
+ ["보시","布施","20",["물질 10","심신 10"],"자기를 위한 것이 아니고 남을 위한 일체 행동을 뜻한다. 자기가 소유하고 있는 것을 베풀어 남에게 도움이 되게 하는 물질보시와 자기의 몸과 마음을 베풀어서 남에게 유익한 결과가 되도록 하는 심신보시로 구분된다."],
+ ["활동","活動","20",["역량 10","성의 10"],"자기의 생활무대에 따라서 그 영향력이 어느 정도 깊고 넓게 미쳐갈 수 있느냐 하는 활동성이다. 이는 일을 보다 효과적인 성공으로 이끌 수 있는 요령으로서의 역량과 옳은 일에 쏟는 정성심 정도로서의 성의로 구분된다."],
+ ["자비","慈悲","20",["외자(권선) 10","내비(용서) 10"],"부모가 자녀에게 품는 것 같은 사랑이며 인자한 마음씨이다. 그 중에서도 다른 사람의 잘된 점을 알면 진실로 자기의 일과 같이 반갑고 기뻐하며 더욱 잘 할 수 있도록 북돋아 주는 마음(外慈)과 남의 잘못을 알았을 때는 진실로 자기 잘못인 듯 마음 아파하고 안타깝게 여겨 거기서 헤쳐 나가도록 백방으로 주선해 주려는 마음(內悲)으로 구분할 수 있다."],
+ ["원만","圓滿","20",["내: 삼학병진 10","외: 무원근친소 10"],"내외간에 편협 편벽한 조각 인격이 아니고 두렷함을 갖추어 두루 적응할 수 있는 전인성이다. 내외로 구분하자면 안으로 삼대력이 고루 짜이고 두렷하게 갖춤이요, 밖으로 원근친소에 집착 없이 대인 접물에 두루 통할 수 있는 마음의 도량을 뜻한다."]
+];
+const DOWN=[
+ ["보통급 계문",[
+  ["연고살생","대의를 살리고 세우기 위해 만부득이한 경우가 아니면서 잔인성과 욕심과 습관으로 타의 생명을 앗아 버리는 일"],
+  ["도둑질","근본적으로는 네것 내것이 없으나 현실적으로는 내것이 아닌 것을 정도가 아닌 부당한 방법으로 빼앗아 차지하는 일"],
+  ["간음","생리적 욕구에 사로 잡혀 부정당한 입장에서 남의 정절을 유린하거나 스스로의 정절을 유린하는 일"],
+  ["연고음주","누구나 인증이 될 만한 충분한 이유가 없이 술을 기호로 마시거나 절제없는 자세로 과도히 마시는 행위"],
+  ["잡기","우리 생활에 아무런 보탬이 되지 않을 뿐만 아니라 오히려 저해 요인이 되는 비생산적인 각종 놀이와 재주풀이"],
+  ["악구","착하고 부드럽고 다습고 여유있는 분위기를 조성하는 말이 아니라 악하고 거칠고 차갑고 모질고 막된 분위기를 일으키는 말을 하여 상극의 기운을 조성하고 자타간에 재앙을 불러오는 말"],
+  ["연고쟁투","대의를 살리고 정당방위를 수호하기 위한 이유도 없으면서 자기의 기분따라 또는 자기의 이권을 위해 다투는 행동"],
+  ["공금범용","공공 직책에 있거나 공공활동하는 것을 기회로 공금 공물을 사사로이 유용하는 것으로서 공과 사를 분간 못하거나 공을 통해 사리 사욕을 충족하려는 행위"],
+  ["금전여수","법이나 의리등 심법으로만 사귀어야 할 피차의 처지에서 부득이한 이유도 없이 이권 위주의 금전여수를 하여 법이나 의리 등 심법까지도 흔들리는 결과를 야기하는 행위"],
+  ["연고담배","흡연이 일반화된 것이라고 해서 나도 피우는 행위. 처음 피울 때는 정당한 연고가 있을 수 없다. 다만 이 계문을 받기 전에 이미 굳어버린 생리적 조건이 되어있는 경우만 연고로 받아 들일 수 있다."]]],
+ ["특신급 계문",[
+  ["공사단독","습관적으로나 또는 어떤 저의에서나 또는 어떤 독재벽으로 공사를 공의에 거침없이 처리해 버리는 행위"],
+  ["타인과","다른 사람의 과실 등 약점을 들추어 말하는 것. 타인의 잘못이 보이면 안타깝게 생각하는 마음씨가 아니라, 오히려 어떠한 저의에서나 혹은 습관적으로 흉을 보고 헐뜯고 하는 행동"],
+  ["금은보패","무엇이나 좋은 것이면 모아서 쌓아 두려는 욕심을 삶의 보람으로 여기고 하는 자세와 행동"],
+  ["의복사치","사치와 허영의 마음으로 스스로를 꾸미고 장식하고 단장하려는 계교"],
+  ["삿된 벗","삿된 벗을 좇아 휩쓸려 놀러 다니는 것. “친구는 제2의 나”이다. 따라서 친구는 양보다 질을 택해서 사귀어야 한다. 옳고 그른 줄도 모르고 삿되게 어울려 그저 떼지어 놀고 휩쓸리는 것"],
+  ["병설","두 사람이 아울러 말하는 것. 자기 주장을 재빨리 내세우려는 성급한 마음으로 상대방이 말하고 있는 도중에 자기 말부터 내뿜는 것"],
+  ["신용없음","신용을 지키지 않는 습벽. 습관적으로 약속에 대해 해이하거나 또는 자기의 이권을 위해서는 신용도 아랑곳 하지 않는 행위"],
+  ["꾸미는 말","비단같이 꾸미는 말. 말이란 자기의 충정을 전달하면 그것으로 족하다. 어떠한 계교 사량을 일어내어 기교를 부리는 말은 천진을 상한다."],
+  ["연고 잠","연고없이 때아닌 때 나태한 마음으로 잠자는 행위. 정당한 이유없이 때아닌 때 눕는 것은 근면을 좀먹고 의욕적 힘을 사장한다."],
+  ["노래춤","방종 방탕이 동기가 되어서 하는 것은 물론 그렇지 않더라도 예아닌 노래 부르고 춤추는 자리에 좇아 노는 것. 끝내는 자기 스스로가 방탕 방종의 함정에 빠져 패가 망신이 뒤따를 뿐이다."]]],
+ ["법마상전급 계문",[
+  ["아만심","자기라는 위치에 걸려 오만불손하는 자존심. 실오라기만한 우위에 걸려 나오는 아만심이 겸허한 품위를 상하며 위아래를 잃어 고독을 스스로 불러 온다."],
+  ["두아내","두 아내를 거느린다는 뜻으로 만물의 영장다운 일부일처의 윤리를 지키지 못한 것을 의미한다."],
+  ["연고사육","정당한 이유없이 기호나 습관으로 육물을 취해 먹는 것을 의미. 만물 가운데 특히 사족축생은 사람과 그 윤기가 가장 가깝다. 윤기가 가까운 중생의 살을 먹으면 인(仁)을 상하게 되고 간접적으로 한생의 생명이 무고하게 죽음을 당한다. 그러므로 사육을 먹지 말자는 것이다."],
+  ["나태","게으름으로 안일욕에 사로잡혀 자기의 의무와 책임을 외면하고 무사안일에 젖어 가라 앉는 마음."],
+  ["한입두말","한 입으로 두말하는 것. 두 사람 사이를 이간하는 말. 자기의 처세를 위해 지조없이 무책임한 말이나 대의와 의리를 상하는 말을 함부로 하는 것. 두 사람 사이에 각각 다른 말을 하여 신변 보호를 하려고 하는 말."],
+  ["망어","망녕된 말로 아무런 실용적인 의미가 없는 군소리 신소리 등. 남의 호기심을 자극하기 위해 알맹이 없이 내뿜는 말."],
+  ["시기심","상대심에 바탕하여 남의 잘하고 좋은 일을 보면 미워하고 꺼리면서 부정적으로 받아 넘기려는 마음. 심하면 모략 중상으로까지 비약한다."],
+  ["탐심","재색명리간에 분수를 벗어나서 욕심껏 차지하려는 마음. 행여 남에게 빼앗길세라 어떠한 수단 방법으로라도 가로채서 내 소유로 하고자 하는 강한 욕심."],
+  ["진심","밖으로부터의 분수를 벗어나서 자기의 뜻에 거슬려 부딪칠 때 역정이 나서 성내는 마음. 일단 성이 나고 보면 자기의 위치, 상대방의 위치 및 경위를 참작할 겨를도 없이 매각되어 일을 그르치는 결과를 만들어 버리고 만다. 그리하여 크고 작은 모든 다툼의 비롯이 된다."],
+  ["치심","그 무엇에라도 가리어 사실과 본심이 위장되어 나오는 마음들로서 과장하는 마음, 관념에 걸린 마음, 관습에 걸린 마음, 상에 걸린 마음, 기타 일체 비진리적인데에 걸려 있는 마음."]]],
+ ["허위·편심·아상",[
+  ["허위","실답고 참스러움이 없이 허황되고 거짓스러움이다. 대인접물을 하고 일을 해결해 나가는데 있어서 진실로 풀어가려 하지 아니하고 허망하고 거짓스러운 허위로써 대처해 가려 한다."],
+  ["편심","대인관계가 원만하지 못하고 몇몇 소수에 국집 편착하는 마음. 즉 원근친소 자타혈연 등에 편착하여 두루 통하지 못하고 대의를 아랑곳 하지 않는 마음으로 파당형성에 원인이 된다."],
+  ["아상","자기를 중심으로 일체 명상에 사로잡힌 마음. 자기 것이거나 자기가 관계한 것이라면 실오라기 만한 것이라도 알리고 드러내서 자랑을 해야 후련한 마음."]]]
+];
+const LEDGER=[
+ ["수입","收入","대",["그해(本年分)에 받은 기본용금, 직원복리비, 생활지원금, 급료, 수당, 강의료, 연구비 등 정당한 노력의 대가로 받은 현금이나 물질(현금환산)의 총액을 적는다."]],
+ ["지출","支出","차",["그해(本年分)에 자기 자신이나 부양가족을 위해서 쓰인 현금의 총액을 적는다.","그해(本年分)에 자기로 인해서 교단이나 단체나 공중에 손해가 난 경우 그 금액을 적는다."]],
+ ["대부","貸付","대",["현재 상황에서 타인에게 받기로 하고 빌려준 현금의 총액을 적는다.","타인에게 무상으로 빌려준 것은 혜시로 한다."]],
+ ["차용","借用","차",["현재 상황에서 타인에게 빌려 쓰고 갚지 않은 현금의 총액을 적는다.","공금은 해당되지 않는다.","지금까지 교단이나 공중에 손해를 끼친 총액을 적는다."]],
+ ["혜수","惠受","차",["본년분을 먼저 적는다.","그해(本年分)에 특별한 노력 없이 타인으로부터 받은 현금이나 물질(현금환산)의 총액을 적는다.","총부, 기관, 교당 근무자로 그해(本年分)에 공적으로 그곳에서 숙식생활을 한 경우 숙식비 총액을 적는다.","출가자의 경우 그해(本年分)에 사가에서 숙식한 경우 숙식비 총액을 적는다.","<b>전년도까지의 계</b>: 처음으로 수지대조를 하는 사람은 표1에서 자신의 최종 학력에 해당하는 누계를 적고, 표2에 따라 졸업 이후 검사년도 전까지의 금액을 적는다."]],
+ ["혜시","惠施","대",["본년분을 먼저 적는다.","그해(本年分)에 타인에게 베푼 현금이나 물질(현금환산)의 총액을 적는다.","표3(전무출신 급수별 혜시 점수표)과 표4(수입 기준 참고표)를 참고하고, 그 외에 그해 타인에게 추가로 베푼 것도 적는다.","<b>전년도까지의 계</b>: 교역자 승인 이후부터 검사년도 전까지는 표3, 표4를 참고한다. 처음으로 수지대조를 하는 사람은 이전에 있었던 혜시 총액을 적는다. 휴무기간은 산출에서 제외하며, 출가 이전에도 혜시가 있었으면 총액을 적는다."]]
+];
+const esc=s=>s.replace(/[&<>]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;"}[c]));
+document.getElementById("upItems").innerHTML=UP.map(([n,h,p,subs,d,extra])=>
+ `<details><summary><span class="nm">${n}</span><span class="hj">${h}</span><span class="pt">${p}점</span></summary>
+ <div class="body"><p>${esc(d)}</p>${extra?`<p class="note">※ ${esc(extra)}</p>`:""}
+ <div class="chips">${subs.map(s=>`<span>${esc(s)}</span>`).join("")}</div>
+ ${n==="서원"?`<p class="note" style="margin-top:8px">원의 크기에 따른 단계 점수입니다.</p>`:""}</div></details>`).join("");
+document.getElementById("downItems").innerHTML=DOWN.map(([g,list])=>
+ `<div class="grp">${g}</div><div class="items">${list.map(([n,d])=>
+ `<details><summary><span class="nm">${n}</span><span class="pt">10점</span></summary><div class="body"><p>${esc(d)}</p></div></details>`).join("")}</div>`).join("");
+document.getElementById("ledgerItems").innerHTML=LEDGER.map(([n,h,t,lines])=>
+ `<details><summary><span class="nm">${n}</span><span class="hj">${h}</span><span class="pt" style="color:${t==="대"?"var(--moss)":"var(--clay)"}">${t}(${t==="대"?"貸":"借"})</span></summary>
+ <div class="body"><ol class="plain">${lines.map(l=>`<li>${l}</li>`).join("")}</ol></div></details>`).join("");
+
+/* tabs */
+const tabs=[...document.querySelectorAll('[role="tab"]')];
+tabs.forEach((t,i)=>t.addEventListener("click",()=>{
+  tabs.forEach((x,j)=>{x.setAttribute("aria-selected",i===j);document.getElementById("ex"+j).hidden=i!==j;});
+}));
+/* expand all */
+document.querySelectorAll(".expand").forEach(b=>b.addEventListener("click",()=>{
+  const ds=document.querySelectorAll("#"+b.dataset.target+" details");
+  const open=b.textContent==="모두 펼치기";
+  ds.forEach(d=>d.open=open);
+  b.textContent=open?"모두 접기":"모두 펼치기";
+}));
+/* nav highlight */
+const links=[...document.querySelectorAll("nav a")];
+const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){
+  links.forEach(a=>a.classList.toggle("on",a.getAttribute("href")==="#"+e.target.id));
+  const on=links.find(a=>a.classList.contains("on")); if(on){const ul=on.closest("ul");ul.scrollLeft=on.parentElement.offsetLeft-ul.clientWidth/2+on.offsetWidth/2;}
+}})},{rootMargin:"-45% 0px -50% 0px"});
+document.querySelectorAll("main section").forEach(s=>io.observe(s));
+</script>
+</body>
+</html>
