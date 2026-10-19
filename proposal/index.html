@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>수지대조 개선 제안</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#F5F6EE; --surface:#FFFFFF; --ink:#26261C; --muted:#5E5D4E; --line:#DCDECB;
+  --moss:#56620E; --lime:#DFE56B; --lime-soft:#EEF1B8;
+  --apricot:#F4A473; --apricot-soft:#FCE3D3; --clay:#A64C1D;
+  --leader:#3D4A5C; --leader-soft:#E3E8EF;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#191A13; --surface:#22231B; --ink:#ECEDE0; --muted:#B3B3A2; --line:#3A3C2E;
+    --moss:#CBD56B; --lime:#4D5418; --lime-soft:#2E3213;
+    --apricot:#C9774A; --apricot-soft:#3B2618; --clay:#F0A57A;
+    --leader:#B9C7DA; --leader-soft:#232B36;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#191A13; --surface:#22231B; --ink:#ECEDE0; --muted:#B3B3A2; --line:#3A3C2E;
+  --moss:#CBD56B; --lime:#4D5418; --lime-soft:#2E3213;
+  --apricot:#C9774A; --apricot-soft:#3B2618; --clay:#F0A57A;
+  --leader:#B9C7DA; --leader-soft:#232B36;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-padding-top:64px;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--paper);color:var(--ink);
+  font-family:"Noto Sans KR","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+  font-size:17px;line-height:1.75;word-break:keep-all;overflow-wrap:break-word}
+h1,h2,h3{font-family:"Gowun Batang","Nanum Myeongjo","AppleMyungjo",serif;font-weight:700;line-height:1.35;margin:0}
+p{margin:0 0 .8em}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--moss);outline-offset:2px;border-radius:4px}
+.hero{background:var(--lime);padding:40px 24px 32px}
+.hero .year{font-size:15px;font-weight:500;opacity:.8;margin-bottom:10px}
+.hero h1{font-size:40px;letter-spacing:.02em}
+.hero .motto{font-family:"Gowun Batang",serif;font-size:19px;margin-top:14px;line-height:1.6}
+.hero .org{margin-top:18px;font-size:15px;font-weight:500}
+nav{position:sticky;top:0;z-index:10;background:var(--paper);border-bottom:1px solid var(--line)}
+nav ul{display:flex;gap:6px;list-style:none;margin:0;padding:10px 16px;overflow-x:auto;scrollbar-width:none}
+nav ul::-webkit-scrollbar{display:none}
+nav a{display:block;white-space:nowrap;text-decoration:none;font-size:15px;font-weight:500;
+  padding:7px 14px;border-radius:999px;border:1px solid var(--line);background:var(--surface)}
+main{max-width:680px;margin:0 auto;padding:0 16px 48px}
+section{padding:40px 0 8px}
+section>h2{font-size:28px;margin-bottom:6px}
+.sub{color:var(--muted);font-size:15px;margin-bottom:20px}
+h3{font-size:20px;margin:28px 0 10px}
+ul.dots,ol.plain{padding-left:1.3em;margin:0 0 12px}
+ul.dots li,ol.plain li{margin-bottom:8px}
+.callout{background:var(--lime-soft);border-left:4px solid var(--moss);padding:14px 16px;border-radius:0 10px 10px 0;margin:16px 0;font-size:16px}
+.callout.warm{background:var(--apricot-soft);border-color:var(--clay)}
+.callout.leader{background:var(--leader-soft);border-color:var(--leader)}
+.callout strong{display:block;margin-bottom:4px}
+.tbl{overflow-x:auto;margin:10px 0 6px;border:1px solid var(--line);border-radius:10px;background:var(--surface)}
+table{border-collapse:collapse;width:100%;font-size:15px}
+th,td{padding:9px 11px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top;line-height:1.6}
+th{background:var(--lime-soft);font-weight:700}
+tr:last-child td{border-bottom:0}
+.tbl.wide table{min-width:560px}
+td.n{text-align:center;font-family:"Gowun Batang",serif;font-weight:700;width:52px}
+.tag{display:inline-block;font-size:13px;font-weight:700;padding:1px 8px;border-radius:6px;white-space:nowrap}
+.tag.ok{background:var(--lime-soft);color:var(--moss)}
+.tag.no{background:var(--apricot-soft);color:var(--clay)}
+.tag.keep{background:var(--leader-soft);color:var(--leader)}
+.cards{display:grid;gap:12px;margin:14px 0}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px}
+.card h4{margin:0 0 6px;font-size:17px;font-family:"Gowun Batang",serif}
+.card .meta{font-size:14px;color:var(--muted);margin-top:8px}
+.card.pick{border:2px solid var(--moss)}
+.card.pick h4::after{content:"권고";font-family:"Noto Sans KR",sans-serif;font-size:12px;background:var(--moss);color:var(--paper);border-radius:6px;padding:1px 7px;margin-left:8px;vertical-align:middle}
+.formula{font-family:"Gowun Batang",serif;font-size:18px;text-align:center;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px;margin:14px 0}
+.note{font-size:14px;color:var(--muted)}
+.back{display:inline-block;margin-top:24px;font-size:15px;text-decoration:none;border:1px solid var(--line);border-radius:999px;padding:7px 14px;background:var(--surface)}
+footer{max-width:680px;margin:0 auto;padding:0 16px 40px;font-size:14px;color:var(--muted)}
+footer ul{padding-left:1.2em}
+@media (max-width:420px){.hero h1{font-size:32px}section>h2{font-size:24px}}
+</style>
+</head>
+<body>
+<header class="hero">
+  <div class="year">원기111년 · 출가교화단</div>
+  <h1>수지대조 개선 제안</h1>
+  <p class="motto">상징척도인가, 실제가치인가</p>
+  <div class="org">신분검사 수지대조 참고표(표1~표4) 정비를 위한 검토</div>
+</header>
+
+<nav aria-label="목차">
+  <ul>
+    <li><a href="#bg">제안 배경</a></li>
+    <li><a href="#now">현황 점검</a></li>
+    <li><a href="#need">개선 필요</a></li>
+    <li><a href="#plan">개선안</a></li>
+    <li><a href="#end">결론</a></li>
+  </ul>
+</nav>
+
+<main>
+
+<section id="bg">
+  <h2>1. 제안 배경</h2>
+  <p class="sub">작성을 돕기 위한 표가 오히려 작성을 어렵게 하고 있습니다.</p>
+  <ul class="dots">
+    <li><b>활용법을 알기 어렵습니다.</b> 표만 보아서는 무엇을 찾아 어느 칸에 옮겨 적으라는 것인지 드러나지 않습니다.</li>
+    <li><b>현재 물가를 반영하지 못합니다.</b> 표의 금액은 당시 쌀 한 가마니 기준가에서 출발한 오래된 수치입니다.</li>
+  </ul>
+  <p>신분검사는 원기12년 소태산 대종사께서 공부와 사업을 더욱 향상시키고 교단의 인사 대우에도 활용하기 위해 제정하신 자기 점검법입니다. 수지대조는 한 해 동안 복을 지었는지 빚을 지었는지를 살피는 것으로, 그 핵심은 정확한 회계가 아니라 <b>지난해와 올해를 대조하여 변화를 아는 데</b> 있습니다.</p>
+</section>
+
+<section id="now">
+  <h2>2. 현황 점검</h2>
+  <p class="sub">참고표는 원기100년 이전부터 숫자 그대로이며, 원기101년의 물가 반영 시도는 '다음 과제'로 남은 뒤 이어지지 않았습니다.</p>
+
+  <h3>가. 현행 참고표의 구조와 근거</h3>
+  <div class="tbl wide"><table>
+    <tr><th>표</th><th>내용</th><th>기준</th><th>근거</th></tr>
+    <tr><td>표1 표준지출참고표</td><td>처음 작성 시 학력별 혜수 누계</td><td>월 14만원의 배수</td><td>당시 쌀 한 가마니 기준가</td></tr>
+    <tr><td>표2 학업 후 지출 기준표</td><td>졸업 후 검사년도 전까지 혜수</td><td>월 14만원의 배수</td><td>당시 쌀 한 가마니 기준가</td></tr>
+    <tr><td>표3 전무출신 급수별 혜시 점수표</td><td>근무년수·급여구분별 연간 혜시</td><td>1점 × 132만원(추정)</td><td>원기80년 출가근무성적 기준표</td></tr>
+    <tr><td>표4 수입 기준 참고표</td><td>공심 등급 × 역량별 월 혜시</td><td>월 14만원의 배수</td><td>명시 없음</td></tr>
+  </table></div>
+  <ul class="dots note">
+    <li>표3은 원기80년 출가근무성적 기준표의 근무년수 구간과 급여구분(120%·100%·20%)을 그대로 따릅니다. 원 문서의 "1점: 10가마" 표기는 원본 확인이 필요합니다.</li>
+    <li>표3 '용금만 받는 자·8~12년' 칸은 계산상 12,672천원이나 12,120천원으로 적혀 있어 오기 가능성이 있습니다.</li>
+  </ul>
+
+  <h3>나. 안내서 대조</h3>
+  <p>표1~표4의 금액은 원기100년·107년·111년 안내서가 모두 같습니다. 원기101년 개편 때 바뀐 것은 문구뿐입니다.</p>
+  <div class="tbl"><table>
+    <tr><th>항목</th><th>원기100년</th><th>원기101년 개편 이후</th></tr>
+    <tr><td>당연등급 4점</td><td>많이 된다</td><td>반 정도 된다</td></tr>
+    <tr><td>부당등급 6점</td><td>많이 떼었다</td><td>반 정도 떼었다</td></tr>
+    <tr><td>점검표 보관</td><td>개인이 보관</td><td>단장의 확인을 받아 개인이 보관</td></tr>
+    <tr><td>표1·2 학력</td><td>대학원</td><td>석사</td></tr>
+  </table></div>
+
+  <h3>다. 원기101년 신분검사서 개편위원회</h3>
+  <p>원기101년 6월 의장단협의회 결의로 구성되어 세 차례 회의 후, 10월 27일 제18차 의장단협의회에 결과를 보고했습니다.</p>
+  <div class="tbl wide"><table>
+    <tr><th>항목</th><th>결정 내용</th><th>현재</th></tr>
+    <tr><td>표1·표2</td><td>외부 전문가에게 물가 반영 조견표를 의뢰했으나 조견표 대신 의견서가 회신되어, 다음 과제로 남기고 수정 없이 사용</td><td><span class="tag no">10년간 미수정</span></td></tr>
+    <tr><td>표3</td><td>원기80년 출가근무성적 기준표 기준임을 확인, 수정 없이 사용</td><td><span class="tag keep">유지</span></td></tr>
+    <tr><td>당연·부당등급 항목</td><td>대종사님 당대부터 사용해 온 항목이라 수정하지 않음</td><td><span class="tag keep">유지</span></td></tr>
+    <tr><td>기타 과제: 원티스 전산화</td><td>결과를 기록하고 본인이 확인</td><td><span class="tag ok">시행</span></td></tr>
+    <tr><td>기타 과제: 총점 6단계</td><td>당연·부당등급 총점으로 법위 정도 점검</td><td><span class="tag no">미시행</span></td></tr>
+    <tr><td>기타 과제: 단장 수합 보고</td><td>결과를 단장이 수합해 상단에 보고, 주무부서 관리</td><td><span class="tag no">미시행</span></td></tr>
+  </table></div>
+
+  <h3>라. 실시 현황 (원기100년 조사)</h3>
+  <ul class="dots">
+    <li>136개 단 가운데 42개 단(약 3분의 1)만 단회에서 함께 실시했습니다.</li>
+    <li>신분검사가 교단의 어떤 제도와도 연결되지 않아 개인공부에 머무는 경향이 있다는 진단이 있었습니다.</li>
+    <li>불법연구회 통치조단규약(단규세칙 제9조, 단규원칙 제48조)은 단장이 단원의 성적과 신분검사를 이상단장에게, 이상단장이 교무부에 보고하도록 했습니다.</li>
+  </ul>
+</section>
+
+<section id="need">
+  <h2>3. 개선이 필요한 부분</h2>
+  <div class="callout">
+    <strong>먼저 정해야 할 것</strong>
+    표를 <b>상징척도</b>(쌀 가마 단위의 상대 척도)로 둘지, <b>실제가치</b>(현재 원화 금액)로 계산할지입니다. 나머지 문제의 해법은 이 결정에 따라 달라집니다.
+  </div>
+  <ol class="plain">
+    <li><b>상징척도와 실제가치가 정해져 있지 않습니다.</b> 표4 공사병행·보통(월 84만원)을 올해 최저임금(시급 10,320원)으로 나누면 한 달 약 81시간 활동이 됩니다. 표가 노동 가치를 계산한 것이 아니라 상대 척도임을 보여 줍니다.</li>
+    <li><b>기준단위가 숨어 있어 이해하기 어렵습니다.</b> 1가마 = 14만원이라는 기준이 적혀 있지 않습니다.</li>
+    <li><b>물가를 반영할 수 없는 구조입니다.</b> 절대 금액을 적어 두어 표 전체를 고쳐야 하며, 그래서 10년간 고쳐지지 않았습니다.</li>
+    <li><b>명칭과 단위가 혼란스럽습니다.</b> 표3은 '점수표'인데 단위가 천원이고, 표4는 '수입 기준표'인데 혜시 항목에 붙어 있습니다.</li>
+    <li><b>표3과 표4의 관계가 불분명합니다.</b> 출가자에게 둘 다 참고하라고 하지만 나눠 쓰는 기준이 없습니다. 원기101년에도 표4 삭제가 검토된 바 있습니다.</li>
+    <li><b>물질 희사가 중복될 수 있습니다.</b> 희사 내역은 '나의 복전'에 정리되는데, 표4로 다시 환산하면 두 번 반영됩니다.</li>
+    <li><b>사용법이 표에 드러나지 않습니다.</b> 월 금액에 12를 곱하는 단계, 공심 점수와 표4 행의 연결이 안내되어 있지 않습니다.</li>
+    <li><b>세부 표기 문제가 있습니다.</b> '無公有私'와 '무공사사' 불일치, 표1 박사 칸의 배수 규칙 이탈, 연령 구간 경계 중복, 표3 칸의 오기 가능성.</li>
+    <li><b>원기101년 과제가 이어지지 않았습니다.</b> 조견표, 단장 수합 보고, 총점 6단계 점검이 인계되지 않았습니다.</li>
+  </ol>
+</section>
+
+<section id="plan">
+  <h2>4. 개선안</h2>
+  <p class="sub">네 방향은 서로 배타적이지 않으며 단계적으로 이어 갈 수 있습니다.</p>
+
+  <div class="cards">
+    <div class="card pick">
+      <h4>A. 가마 단위 전환</h4>
+      <p>표 금액을 가마 수로 바꾸고, 매년 "올해 1가마 = ○○원"만 공지합니다. 예: 표1 취학 전 140천원 → 1가마, 표4 공사병행·보통 840천원 → 6가마.</p>
+      <div class="meta">장점: 표는 영구 사용, 이해 쉬움, 대종사님 당시 정신 계승 · 한계: 쌀값이 일반 물가보다 덜 올라 생활비가 낮게 잡힘 · 관리 부담 낮음</div>
+    </div>
+    <div class="card pick">
+      <h4>B. 기준 대비 등급화</h4>
+      <p>원기101년 김도훈 교도의 의견처럼, 금액 대신 기준표 대비 자신의 정도를 6단계 등급으로 적습니다. 가마 기준표와 결합하면 데이터 없이 시작할 수 있습니다.</p>
+      <div class="meta">장점: 당연·부당등급과 같은 방식, 금액 공개 부담 없음 · 한계: 기준 설정 필요 · 관리 부담 낮음~중간</div>
+    </div>
+    <div class="card">
+      <h4>C. 실제가치 산정</h4>
+      <p>수입·혜시는 용금 기준액, 생활비는 기준중위소득 같은 공공 통계, 활동은 시간 × 최저임금에 공심을 가중치로 산정합니다.</p>
+      <div class="meta">장점: 객관적, 사람 간 비교 가능 · 한계: 활동 시간 기록 필요, 구조가 크게 바뀜 · 관리 부담 높음</div>
+    </div>
+    <div class="card">
+      <h4>D. 데이터 기반 단계적 보정</h4>
+      <p>공식 수치로 임시 기준을 세우고, 등급만 원티스에 모아 분포를 본 뒤, '3년 총결산' 주기에 맞춰 기준을 조정합니다.</p>
+      <div class="meta">장점: 교역자들의 실제 분포가 기준이 됨 · 한계: 단장 수합 보고 체계 필요 · 관리 부담 중간~높음</div>
+    </div>
+  </div>
+
+  <h3>B안 등급표 예시 (혜시)</h3>
+  <div class="tbl"><table>
+    <tr><th>점수</th><th>기준 대비</th></tr>
+    <tr><td class="n">0</td><td>거의 없다</td></tr>
+    <tr><td class="n">2</td><td>기준의 절반에 못 미친다</td></tr>
+    <tr><td class="n">4</td><td>기준에 조금 못 미친다</td></tr>
+    <tr><td class="n">6</td><td>기준 정도다</td></tr>
+    <tr><td class="n">8</td><td>기준보다 많다</td></tr>
+    <tr><td class="n">10</td><td>기준의 두 배를 넘는다</td></tr>
+  </table></div>
+  <p class="note">지출·혜수는 부당등급처럼 낮을수록 좋은 방향으로 읽습니다.</p>
+
+  <h3>공통 정비사항</h3>
+  <ul class="dots">
+    <li><b>표4 정리:</b> 물질 희사를 제외하고 활동(봉공, 교당 일, 법회·행사 참여, 사회봉사 등)만으로 평가. 열 이름은 '역량'에서 '활동'으로, 공심 행은 "활동에 임한 마음가짐"으로 고르도록 안내</li>
+    <li><b>희사 합산 안내:</b> 아래 식을 표 아래에 명시</li>
+  </ul>
+  <div class="formula">연간 혜시 = 활동 혜시 + 1년간 희사 금액('나의 복전' 참고)</div>
+  <ul class="dots">
+    <li><b>표3·표4 관계 명시:</b> 근무 혜시는 표3, 근무 외 공익활동은 표4로 구분하거나 적용 대상을 분명히</li>
+    <li><b>사용법과 작성 예시:</b> 표마다 "언제, 어느 칸에 적는지" 한 줄과 가상 사례 한 건. 월 기준은 연 기준으로 바꿔 12를 곱하는 단계를 없앰</li>
+    <li><b>표기 정비:</b> '無公有私' → '무공사사', 표1 박사 칸·연령 구간·표3 칸 확인</li>
+  </ul>
+</section>
+
+<section id="end">
+  <h2>5. 결론</h2>
+  <div class="callout leader">
+    <strong>상징척도를 유지하되, 관리하지 않아도 무너지지 않는 방식으로</strong>
+    A안(가마 단위 전환)을 바탕으로 B안(기준 대비 등급화)을 결합하고, 공통 정비사항을 함께 적용할 것을 제안합니다.
+  </div>
+  <ul class="dots">
+    <li>수지대조의 목적은 정확한 회계가 아니라 대(貸)와 차(借)의 균형, 지난해와 올해의 변화를 살피는 데 있습니다.</li>
+    <li>원기101년에 개선을 결정하고도 이어지지 못한 것은 복잡하고 갱신할 주체가 없었기 때문입니다. 매년 숫자 하나만 갱신하면 되는 구조가 필요합니다.</li>
+    <li>쌀 가마라는 기준 자체가 대종사님 당시의 상징척도였으므로, 이를 살리는 것이 설득력이 큽니다.</li>
+  </ul>
+  <div class="callout warm">
+    <strong>함께 결정할 변수</strong>
+    신분검사를 법위사정·인사에 연계한다면, 사람 사이 비교의 공정성을 위해 C안이나 D안의 필요성이 커집니다. 수지대조 개편은 법위사정 연계 논의와 함께 다루는 것이 자연스럽습니다.
+  </div>
+
+  <h3>향후 처리 방향</h3>
+  <ol class="plain">
+    <li>표3 원 문서의 "1점: 10가마" 표기와 칸 오기 여부를 확인합니다.</li>
+    <li>표기 정비와 사용법·작성 예시처럼 바로 고칠 수 있는 부분부터 다음 신분검사 안내에 담아냅니다.</li>
+    <li>상징척도와 실제가치의 방향, 법위사정 연계 여부는 정단회 회화 주제로 올려 의견을 수렴합니다.</li>
+    <li>원기101년에 남긴 과제(단장 수합 보고, 총점 6단계 법위 점검)를 "101년 과제의 이행"으로 함께 정리합니다.</li>
+  </ol>
+
+  <a class="back" href="../">← 원기111년 신분검사 안내로</a>
+</section>
+</main>
+
+<footer>
+  <p><b>참고 자료</b></p>
+  <ul>
+    <li>원기101년 신분검사서 개편위원회 결과보고 (제18차 의장단협의회, 101.10.27)</li>
+    <li>원기101년 신분검사서 개편위원회 회의록 (2·3차) 및 개편시 메모</li>
+    <li>신분검사와 법위사정의 연계-1 (101.8.26)</li>
+    <li>신분검사 안내서 (원기100년·107년), 원기111년 신분검사 안내</li>
+    <li><a href="https://www.mafra.go.kr/bbs/home/792/577754/artclView.do">농림축산식품부, 산지쌀값 동향 (2026.4.27)</a></li>
+  </ul>
+</footer>
+</body>
+</html>
