@@ -105,6 +105,11 @@ th.n{background:var(--lime)!important}
 td.o{background:color-mix(in srgb,var(--apricot-soft) 50%,transparent)}
 td.n{background:color-mix(in srgb,var(--lime-soft) 60%,transparent);font-weight:700}
 .legend{display:flex;flex-wrap:wrap;gap:8px;margin:6px 0 4px;font-size:13px;color:var(--muted)}
+.next{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:32px 0 0;padding:18px 20px;border-radius:14px;background:var(--ink);color:var(--paper);text-decoration:none}
+.next small{display:block;font-size:13px;opacity:.75}
+.next b{display:block;font-family:"Gowun Batang",serif;font-size:20px;margin:2px 0}
+.next em{display:block;font-style:normal;font-size:14px;opacity:.85}
+.next .arr{font-size:26px;color:var(--lime);flex:none}
 </style>
 </head>
 <body>
@@ -115,7 +120,7 @@ td.n{background:color-mix(in srgb,var(--lime-soft) 60%,transparent);font-weight:
   <div class="org">신분검사 수지대조 참고표(표1~표4) 정비를 위한 검토</div>
 </header>
 <nav aria-label="목차"><ul>
-  <li><a href="#gist">요지</a></li><li><a href="#bg">배경</a></li><li><a href="#fact">근거</a></li><li><a href="#prob">문제</a></li><li><a href="#plan">개선안</a></li><li><a href="#end">결론</a></li><li><a href="#trace">자료 추적</a></li><li><a href="#decide">결정 사항</a></li>
+  <li><a href="#gist">요지</a></li><li><a href="#bg">배경</a></li><li><a href="#fact">근거</a></li><li><a href="#prob">문제</a></li><li><a href="#plan">개선안</a></li><li><a href="#end">결론</a></li>
 </ul></nav>
 <main>
 
@@ -260,19 +265,12 @@ td.n{background:color-mix(in srgb,var(--lime-soft) 60%,transparent);font-weight:
     <li>안내서의 표1~표4를 1갑 15만원 기준으로 다시 산출하고, 표3 불일치 칸을 정리합니다.</li>
     <li>표를 가마·점 단위로 바꾸고 1갑 연동 문구와 사용법·작성 예시를 다음 신분검사 안내에 담아냅니다.</li>
     <li>표4 정리와 희사 합산 안내를 반영합니다.</li>
-    <li>6장의 자료를 추적하고, 7장의 결정 사항은 정단회 회화 주제로 올려 의견을 수렴합니다.</li>
+    <li>근거 자료를 추가로 확인하고, 결정이 필요한 사항은 정단회 회화 주제로 올려 의견을 수렴합니다.</li>
   </ol>
-</section>
-
-<section id="trace">
-  <h2>6. 자료 추적이 필요한 사항</h2>
-  <div class="tbl wide"><table><tr><th>추적할 내용</th><th>필요한 이유</th><th>찾을 곳</th></tr><tr><td>갑의 정의</td><td>갑이 가마에서 출발했다는 추정을 확정하고, 1가마 = 1갑으로 읽는 근거를 세움</td><td>사업성적 세부지침, 원기80년 전면개정 자료, 「90년 사업성적안내」</td></tr><tr><td>최신 1갑 기준액</td><td>규정은 매년 제시하도록 하나 원기106년 이후 변경 공지가 확인되지 않음</td><td>총무부, 원티스 총무부 자료실</td></tr><tr><td>원성적 환산표 현금가</td><td>표3이 따라야 할 공식 기준표</td><td>원티스 총무부 자료실 (원기105년 공지에 언급)</td></tr><tr><td>표3 체계 변경 시점</td><td>「수지대조법」의 표3(5구간, 1점 110만원)과 현행 표3(4구간)의 관계</td><td>원기90~99년 안내서, 「97-99년 신분검사서&점검표」</td></tr><tr><td>표3 불일치 세 칸</td><td>오기인지 의도된 값인지 판단</td><td>원기80년 출가근무성적 기준표 원본</td></tr><tr><td>공심 표기의 원형</td><td>무공사사(無公私事)와 無公有私 중 원 표기 확정</td><td>대산상사님 법문집Ⅰ(원기71년 증보판), 교화지침서(원기76년 수정판)</td></tr><tr><td>'평소 월 2가마' 행</td><td>원형에 있던 학업 외 기본 생활비 기준이 빠진 경위</td><td>「수지대조법」 이후 판 비교</td></tr><tr><td>「수지대조 산출 요령(田山)」</td><td>현행보다 간명한 작성법으로, 사용법 개선의 모델</td><td>「수지대조법」 문서, '田山'의 확인</td></tr></table></div>
-</section>
-
-<section id="decide">
-  <h2>7. 결정이 필요한 사항</h2>
-  <div class="tbl wide"><table><tr><th>결정할 내용</th><th>선택지</th><th>판단에 필요한 것</th></tr><tr><td>표의 기준가</td><td>① 사업성적 1갑에 연동 (권고) ② 산지 쌀값에 연동 ③ 별도 기준액을 매년 고시</td><td>사업성적과 같은 눈금을 유지할지</td></tr><tr><td>1갑 = 1가마를 상징 기준으로 정립할지</td><td>① 수지대조의 상징 기준으로 명시 (권고) ② 가마와 갑을 따로 두고 환산</td><td>6장 '갑의 정의' 추적 결과</td></tr><tr><td>표4의 적용 대상</td><td>① 근무 외 공익활동으로 출가에도 적용 ② 재가교도용으로 두고 출가 안내서에서 제외</td><td>표3과의 역할 구분</td></tr><tr><td>작성 방식</td><td>① 금액 직접 기재 ② 기준표 대비 등급 기재 (김도훈 교도 의견) ③ 둘 다 허용</td><td>작성 부담과 금액 공개 부담</td></tr><tr><td>법위사정·인사 연계</td><td>① 순수 자기 점검으로 유지 ② 3년 총결산을 법위사정 참고자료로 연계</td><td>연계 시 공정성 확보 방안, 단장 수합 보고 체계</td></tr><tr><td>원기101년 과제 처리</td><td>단장 수합 보고, 총점 6단계 법위 점검을 "101년 과제의 이행"으로 다시 올릴지</td><td>정단회 회화</td></tr><tr><td>표1 취학 전 구간</td><td>① 원형대로 1~6(60가마) 유지 ② 0~6(72가마)으로 바로잡기</td><td>첫해를 뺀 것이 의도인지(원 근거 자료 추적)</td></tr><tr><td>표1·표2 학령별 비중</td><td>① 원형 비율 유지(상징척도) ② 취학 전을 영아·유아(유치원)로 나누는 등 현재 실정에 맞게 조정</td><td>표가 실제 비용을 재는지, 상대 비교만 하는지</td></tr><tr><td>공심 표기 통일</td><td>무공사사(無公私事) / 無公有私</td><td>6장 '공심 표기의 원형' 추적 결과</td></tr></table></div>
-  <a class="back" href="../">← 원기111년 신분검사 안내로</a>
+  <a class="next" href="../">
+    <span><small>이어서 보기</small><b>원기111년 신분검사 안내</b><em>당연등급 · 부당등급 · 수지대조 · 12월 단회 진행 요령</em></span>
+    <span class="arr" aria-hidden="true">→</span>
+  </a>
 </section>
 </main>
 
