@@ -96,7 +96,6 @@ figcaption em{font-style:normal;font-weight:700;color:var(--clay)}
 .next b{display:block;font-family:"Gowun Batang",serif;font-size:20px;margin:2px 0}
 .next em{display:block;font-style:normal;font-size:14px;opacity:.85}
 .next .arr{font-size:26px;color:var(--lime);flex:none}
-footer{max-width:680px;margin:0 auto;padding:0 16px calc(40px + env(safe-area-inset-bottom,0px));font-size:14px;color:var(--muted)}
 @media (max-width:520px){.pair{grid-template-columns:minmax(0,1fr)}}
 @media (max-width:420px){.hero h1{font-size:32px}section>h2{font-size:24px}.open{flex-direction:column;align-items:flex-start;gap:6px}}
 </style>
@@ -114,13 +113,13 @@ footer{max-width:680px;margin:0 auto;padding:0 16px calc(40px + env(safe-area-in
 <main>
 
 <div class="lead" id="gist">
-  <p><b>요지.</b> 정보전산실의 도움으로 온라인 신분검사 페이지가 세 가지 달라집니다. 작성하시기 전에 한번 살펴봐 주시기 바랍니다.</p>
+  <p><b>요지.</b> 온라인 신분검사 페이지가 세 가지 달라집니다. 작성하시기 전에 한번 살펴봐 주시기 바랍니다.</p>
   <ol>
     <li><a href="#link"><b>안내 링크 추가</b></a>: 작성 화면에서 신분검사 안내 페이지로 바로 갈 수 있습니다.</li>
     <li><a href="#guide"><b>종별 해설 추가</b></a>: 당연등급·부당등급의 각 종별 아래에 해설이 붙었습니다.</li>
     <li><a href="#suji"><b>수지대조 신설</b></a>: 그동안 없던 수지대조(빈부결산)를 항목별 해설과 함께 온라인으로 작성합니다.</li>
   </ol>
-  <div class="open"><b>12월 2일(수) 오픈 예정</b><span>지금은 시범 페이지에서 화면과 문구를 조정하고 있습니다. 아래 화면은 시범 페이지 기준이라 오픈 때 일부 달라질 수 있습니다.</span></div>
+  <div class="open" id="openbox"><b>12월 2일(수) 오픈 예정</b><span>지금은 시범 페이지에서 화면과 문구를 조정하고 있습니다. 아래 화면은 시범 페이지 기준이라 오픈 때 일부 달라질 수 있습니다.</span></div>
 </div>
 <a class="btn" href="https://comechoi7-crypto.github.io/sinbun/" target="_top">신분검사 안내 페이지로 이동 →</a>
 
@@ -190,8 +189,11 @@ footer{max-width:680px;margin:0 auto;padding:0 16px calc(40px + env(safe-area-in
 </section>
 </main>
 
-<footer>
-  <p>작성 중 궁금하신 점이나 화면 오류는 수위단회사무처로 알려 주시면 정보전산실과 함께 살펴 반영하겠습니다.</p>
-</footer>
+<script>
+{ /* 12월 1일(한국 시간)부터 오픈 예정 안내 숨김 */
+  const box=document.getElementById("openbox");
+  if(box && Date.now()>=Date.parse("2026-12-01T00:00:00+09:00")) box.remove();
+}
+</script>
 </body>
 </html>
