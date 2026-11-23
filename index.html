@@ -74,6 +74,13 @@ h3{font-size:20px;margin:28px 0 10px}
 /* lists */
 ol.plain{padding-left:1.4em;margin:0}
 ol.plain li{margin-bottom:10px}
+.notice{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:24px 0 0;padding:16px 18px;
+  background:var(--apricot-soft);border:1px solid var(--apricot);border-radius:14px;text-decoration:none;color:var(--ink)}
+.notice-txt small{display:block;font-size:13px;font-weight:700;color:var(--clay)}
+.notice-txt b{display:block;font-family:"Gowun Batang",serif;font-size:19px;line-height:1.4;margin:2px 0}
+.notice-txt em{display:block;font-style:normal;font-size:14px;color:var(--muted)}
+.notice-go{flex:none;font-size:15px;font-weight:700;background:var(--ink);color:var(--paper);border-radius:999px;padding:8px 14px;white-space:nowrap}
+@media (max-width:420px){.notice{flex-direction:column;align-items:stretch}.notice-go{text-align:center}}
 .callout{background:var(--lime-soft);border-left:4px solid var(--moss);padding:14px 16px;border-radius:0 10px 10px 0;margin:16px 0;font-size:16px}
 .callout.warm{background:var(--apricot-soft);border-color:var(--clay)}
 .callout.leader{background:var(--leader-soft);border-color:var(--leader)}
@@ -194,7 +201,14 @@ footer{text-align:center;color:var(--muted);font-size:14px;padding:30px 20px 40p
 
 <main>
 
-
+<a class="notice" href="change/">
+  <span class="notice-txt">
+    <small>12월 2일(수) 오픈</small>
+    <b>온라인 신분검사 페이지가 새로워집니다</b>
+    <em>안내 링크 · 종별 해설 · 수지대조 신설</em>
+  </span>
+  <span class="notice-go">변경 안내 보기 <span aria-hidden="true">→</span></span>
+</a>
 
 <section id="about" style="padding-top:28px">
   <h2>신분검사란</h2>
